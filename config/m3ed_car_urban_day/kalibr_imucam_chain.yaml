@@ -1,0 +1,17 @@
+%YAML:1.0
+
+# M3ED left grayscale OVC camera, car_urban_day_* sequences (from the calibration in car_urban_day_horse_data.h5)
+cam0:
+  T_imu_cam: #rotation from camera to IMU R_CtoI, position of camera in IMU p_CinI
+    - [-0.999996190, -0.001230663, 0.002470850, 0.093916275]
+    - [-0.001209744, 0.999963565, 0.008450118, -0.013017701]
+    - [-0.002481159, 0.008447097, -0.999961244, -0.009592036]
+    - [0.000000000, 0.000000000, 0.000000000, 1.000000000]
+  cam_overlaps: []
+  camera_model: pinhole
+  distortion_coeffs: [-0.396373471, 0.164184915, -0.000031843, 0.000709784]
+  distortion_model: radtan
+  intrinsics: [1057.545958, 1057.449534, 674.256473, 335.829070] #fu, fv, cu, cv
+  resolution: [1280, 800]
+  rostopic: /cam0/image_raw
+  timeshift_cam_imu: 0.0

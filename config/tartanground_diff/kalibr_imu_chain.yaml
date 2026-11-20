@@ -1,0 +1,45 @@
+%YAML:1.0
+
+# TartanGround simulated IMU, 100 Hz (imu/parameter.yaml: imu_fps 100), in the lcam_front body
+# frame (NED). acc.txt / gyro.txt are noise and bias free, but they are derived from the 10 Hz
+# pose trajectory by spline fitting: integrating gyro.txt between frames differs from the pose
+# file by 0.07 deg on average (ForestEnv P1000), and the robot motion carries high-frequency
+# bumps (|acc| p99 ~ 68 m/s^2). The noise densities below cover that model error; the random
+# walks are small because there is no bias.
+
+imu0:
+  T_i_b:
+    - [1.0, 0.0, 0.0, 0.0]
+    - [0.0, 1.0, 0.0, 0.0]
+    - [0.0, 0.0, 1.0, 0.0]
+    - [0.0, 0.0, 0.0, 1.0]
+  accelerometer_noise_density: 0.02 # [ m / s^2 / sqrt(Hz) ]
+  accelerometer_random_walk: 1.0e-4 # [ m / s^3 / sqrt(Hz) ]
+  gyroscope_noise_density: 0.002 # [ rad / s / sqrt(Hz) ]
+  gyroscope_random_walk: 1.0e-5 # [ rad / s^2 / sqrt(Hz) ]
+  rostopic: /imu0
+  time_offset: 0.0
+  update_rate: 100.0
+  # three different modes supported:
+  # "calibrated" (same as "kalibr"), "kalibr", "rpng"
+  model: "kalibr"
+  Tw:
+    - [ 1.0, 0.0, 0.0 ]
+    - [ 0.0, 1.0, 0.0 ]
+    - [ 0.0, 0.0, 1.0 ]
+  R_IMUtoGYRO:
+    - [ 1.0, 0.0, 0.0 ]
+    - [ 0.0, 1.0, 0.0 ]
+    - [ 0.0, 0.0, 1.0 ]
+  Ta:
+    - [ 1.0, 0.0, 0.0 ]
+    - [ 0.0, 1.0, 0.0 ]
+    - [ 0.0, 0.0, 1.0 ]
+  R_IMUtoACC:
+    - [ 1.0, 0.0, 0.0 ]
+    - [ 0.0, 1.0, 0.0 ]
+    - [ 0.0, 0.0, 1.0 ]
+  Tg:
+    - [ 0.0, 0.0, 0.0 ]
+    - [ 0.0, 0.0, 0.0 ]
+    - [ 0.0, 0.0, 0.0 ]

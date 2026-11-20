@@ -1,0 +1,52 @@
+%YAML:1.0
+
+# KITTI OXTS RT3003, 100 Hz, taken from the *_extract archive (the *_sync one downsamples
+# the IMU to the 10 Hz camera rate and is unusable for VIO).
+#
+# The car never stops during these drives, so there is no stationary window to measure
+# noise from. These match the values used in the VINS-Mono KITTI config so the two
+# estimators are compared under identical noise assumptions; they are literature-typical
+# for this unit rather than a calibration of it.
+
+imu0:
+  T_i_b:
+    - [1.0, 0.0, 0.0, 0.0]
+    - [0.0, 1.0, 0.0, 0.0]
+    - [0.0, 0.0, 1.0, 0.0]
+    - [0.0, 0.0, 0.0, 1.0]
+  accelerometer_noise_density: 0.01 # [ m / s^2 / sqrt(Hz) ]  measured 0.005-0.009 above 5 Hz incl. road vibration
+  accelerometer_random_walk: 1.0e-5 # [ m / s^3 / sqrt(Hz) ]  bias is <0.012 m/s^2 against GT on every drive, keep it pinned
+  gyroscope_noise_density: 0.0005 # [ rad / s / sqrt(Hz) ]  measured 0.00015-0.00025 above 5 Hz
+  gyroscope_random_walk: 5.0e-6 # [ rad / s^2 / sqrt(Hz) ]
+  rostopic: /imu0
+  time_offset: 0.0
+  update_rate: 100.0
+  # three different modes supported:
+  # "calibrated" (same as "kalibr"), "kalibr", "rpng"
+  model: "kalibr"
+  # how to get from Kalibr imu.yaml result file:
+  #   - Tw is imu0:gyroscopes:M:
+  #   - R_IMUtoGYRO: is imu0:gyroscopes:C_gyro_i:
+  #   - Ta is imu0:accelerometers:M:
+  #   - R_IMUtoACC not used by Kalibr
+  #   - Tg is imu0:gyroscopes:A:
+  Tw:
+    - [ 1.0, 0.0, 0.0 ]
+    - [ 0.0, 1.0, 0.0 ]
+    - [ 0.0, 0.0, 1.0 ]
+  R_IMUtoGYRO:
+    - [ 1.0, 0.0, 0.0 ]
+    - [ 0.0, 1.0, 0.0 ]
+    - [ 0.0, 0.0, 1.0 ]
+  Ta:
+    - [ 1.0, 0.0, 0.0 ]
+    - [ 0.0, 1.0, 0.0 ]
+    - [ 0.0, 0.0, 1.0 ]
+  R_IMUtoACC:
+    - [ 1.0, 0.0, 0.0 ]
+    - [ 0.0, 1.0, 0.0 ]
+    - [ 0.0, 0.0, 1.0 ]
+  Tg:
+    - [ 0.0, 0.0, 0.0 ]
+    - [ 0.0, 0.0, 0.0 ]
+    - [ 0.0, 0.0, 0.0 ]
