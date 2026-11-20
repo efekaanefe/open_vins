@@ -16,8 +16,8 @@ The run, evaluation and plot scripts are in the project repository, in `open_vin
 | `config/kitti_2011_09_30_tuned/` | KITTI raw, date 2011-09-30 | odometry 04-10 |
 | `config/kitti_2011_10_03_tuned/` | KITTI raw, date 2011-10-03 | odometry 00-02 |
 | `config/kitti_2011_09_26_tuned/` | KITTI raw, date 2011-09-26 | odometry 03 (not used, drive not in the raw release) |
-| `config/m3ed_car_urban_day/` | M3ED car, urban, day | 7 |
-| `config/m3ed_car_urban_night/` | M3ED car, urban, night | 5 |
+| `config/m3ed_car_urban_day/` | M3ED car, urban, day | 6 |
+| `config/m3ed_car_urban_night/` | M3ED car, urban, night | 6 |
 | `config/m3ed_car_forest/` | M3ED car, forest | 4 |
 | `config/tartanground_diff/` | TartanGround, differential drive | 117 |
 
@@ -58,7 +58,7 @@ DATASETS_DIR=/abs/path/to/datasets ./ov_docker.sh true  # create and start the c
 
 `serial.launch` reads the bag one frame at a time. Thus the result does not depend on the computer speed.
 
-The project scripts do the same for each dataset: `run_euroc.sh`, `run_kitti.sh`, `run_m3ed.sh`, `run_tartanground.sh`. Refer to the `open_vins_ws` section of the project README.
+The project scripts do the same for each dataset: `run_euroc.sh`, `run_kitti.sh`, `run_m3ed.sh`, `run_tartanground.sh`. Refer to `open_vins_ws/README.md` in the project repository.
 
 ## 4. Results
 
